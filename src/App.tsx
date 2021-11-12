@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "./styles/global";
+import { defaultTheme } from "./styles/theme";
+
+const Home = lazy(() => import("./pages/Home"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const PageHeader = lazy(() => import("./components/PageHeader"));
+const Registration = lazy(() => import("./pages/Registration"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={defaultTheme}>
+        <Suspense fallback={<div>carregando</div>}>
+          <GlobalStyle />
+          <main className="AppBody">
+            <Router>
+              <PageHeader headerTitle="Olá, você está na Produuucts" />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/registration" element={<Registration />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              <Footer />
+            </Router>
+          </main>
+        </Suspense>
+      </ThemeProvider>
     </div>
   );
 }
