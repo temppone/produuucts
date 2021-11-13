@@ -1,16 +1,18 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { HeaderCardContainer, HeaderCardTitle } from "./style";
 
-interface ICardHeader {
+interface IHeaderCard {
   title: string;
+  children?: ReactNode;
 }
 
-const CardHeader = ({ title }: ICardHeader) => {
+const HeaderCard = ({ title, children }: IHeaderCard): JSX.Element => {
   return (
     <HeaderCardContainer>
       <HeaderCardTitle>{title}</HeaderCardTitle>
+      {children}
     </HeaderCardContainer>
   );
 };
 
-export default CardHeader;
+export default HeaderCard;

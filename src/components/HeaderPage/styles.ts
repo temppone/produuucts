@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import { defaultTheme } from "../../styles/theme";
 
-export const PageHeaderContainer = styled.div`
+export const HeaderPageContainer = styled.div`
   width: 100%;
-  background: ${({ theme }) => defaultTheme.palette.gradientBlue};
+  background: ${() => defaultTheme.palette.gradientBlue};
   padding: 2rem 1rem 3rem 1rem;
   z-index: -100;
   position: absolute;
 `;
 
-export const PageHeaderTitle = styled.h1`
+export const HeaderPageTitle = styled.h1`
   padding: 1rem1rem;
   font-size: 1rem;
-  color: ${({ theme }) => defaultTheme.palette.primaryLight};
+  color: ${() => defaultTheme.palette.primaryLight};
   font-weight: bold;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {

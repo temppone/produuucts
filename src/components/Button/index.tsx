@@ -1,14 +1,19 @@
 import React from "react";
+import { ReactElement } from "react";
 import { ButtonContainer, ButtonContent } from "./style";
 
 interface Props {
-  ButtonName: string;
+  name: string;
+  svg?: ReactElement;
 }
 
-const Button = ({ ButtonName }: Props) => {
+const Button = ({ name, svg }: Props): JSX.Element => {
   return (
     <ButtonContainer>
-      <ButtonContent>{ButtonName}</ButtonContent>
+      <ButtonContent>
+        {svg}
+        {name}
+      </ButtonContent>
     </ButtonContainer>
   );
 };
