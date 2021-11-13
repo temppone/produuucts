@@ -1,8 +1,6 @@
 import React from "react";
 
-interface Props {}
-
-const NotFound = (props: Props) => {
+const NotFound = (): JSX.Element => {
   return <div>Erro 404</div>;
 };
 

@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { defaultTheme } from "../../styles/theme";
 
 export const CardContainer = styled.div`
-  background-color: ${(theme) => defaultTheme.palette.primaryLight};
+  background-color: ${() => defaultTheme.palette.primaryGrey};
   border-radius: 1rem 1rem 0rem 0rem;
   width: 100%;
   padding: 0.9rem;
   margin-top: 5rem;
-  height: 100vh;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+  margin-bottom: 5rem;
+  height: auto;
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
     max-width: 599px;

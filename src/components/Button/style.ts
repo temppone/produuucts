@@ -2,14 +2,19 @@ import styled from "styled-components";
 import { defaultTheme } from "../../styles/theme";
 
 export const ButtonContainer = styled.div`
-  width: 100%;
-  color: ${(theme) => defaultTheme.palette.gradientBlue};
+  color: ${() => defaultTheme.palette.gradientBlue};
 `;
 
 export const ButtonContent = styled.button`
-  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: transparent;
+  color: ${() => defaultTheme.palette.primaryBlue};
+  cursor: pointer;
 
   :hover {
-    background-color: ${(theme) => defaultTheme.palette.gradientSecundaryBlue};
+    color: ${() => defaultTheme.palette.secundaryBlue};
   }
 `;

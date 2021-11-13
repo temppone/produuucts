@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-interface Props {}
-
-const Footer = (props: Props) => {
+const Footer = (): JSX.Element => {
   return (
     <ul>
       <li>

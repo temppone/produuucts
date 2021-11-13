@@ -6,11 +6,11 @@ import { defaultTheme } from "./styles/theme";
 
 const Home = lazy(() => import("./pages/Home"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const PageHeader = lazy(() => import("./components/PageHeader"));
+const HeaderPage = lazy(() => import("./components/HeaderPage"));
 const Registration = lazy(() => import("./pages/Registration"));
 const Footer = lazy(() => import("./components/Footer"));
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
       <ThemeProvider theme={defaultTheme}>
@@ -18,7 +18,7 @@ function App() {
           <GlobalStyle />
           <main className="AppBody">
             <Router>
-              <PageHeader headerTitle="Olá, você está na Produuucts" />
+              <HeaderPage headerTitle="Olá, você está na Produuucts" />
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/registration" element={<Registration />} />

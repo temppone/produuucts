@@ -1,51 +1,78 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { ReactComponent as Plus } from "../../assets/plus.svg";
+import Button from "../../components/Button";
 import { CardContainer } from "../../components/Card/style.";
-import CardHeader from "../../components/CardHeader";
-import CardItem from "../../components/CardItem";
+import HeaderCard from "../../components/HeaderCard";
+import ProductCard from "../../components/ProductCard";
+import { toMoney } from "../../core/toMoney";
+import { HomeContainer } from "./styles";
 
-interface Props {}
-
-const Home = (props: Props) => {
+const Home = (): JSX.Element => {
   const items = [
     {
-      id: 1,
+      id: "A12J2",
       category: "Eletrônico",
-      name: "Notebook",
+      name: "Notebook G40",
       providerName: "Lenovo",
       price: 2010,
     },
 
     {
-      id: 2,
+      id: "2DK20",
       category: "Eletrônico",
-      name: "Celular",
+      name: "Celular AJ5",
       providerName: "Samsung",
       price: 1100,
     },
 
     {
-      id: 3,
+      id: "1229J",
       category: "Eletrônico",
-      name: "Tablet",
+      name: "Tablet JJ22",
+      providerName: "Samsung",
+      price: 22300,
+    },
+    {
+      id: "12J92",
+      category: "Eletrônico",
+      name: "iPad Plus 100",
+      providerName: "Samsung",
+      price: 22300,
+    },
+    {
+      id: "12J92",
+      category: "Eletrônico",
+      name: "Fita isolante",
       providerName: "Samsung",
       price: 22300,
     },
   ];
 
   return (
-    <CardContainer>
-      <CardHeader title="Produtos" />
-      {items.map((item) => (
-        <CardItem
-          key={item.id}
-          id={item.id}
-          category={item.category}
-          name={item.name}
-          providerName={item.providerName}
-          price={item.price}
-        />
-      ))}
-    </CardContainer>
+    <HomeContainer>
+      <CardContainer>
+        <HeaderCard title="Produtos">
+          <Link to={"registration"}>
+            <Button
+              svg={<Plus style={{ marginRight: "0.4rem", width: "0.9rem" }} />}
+              name="Adicionar produto"
+            />
+          </Link>
+        </HeaderCard>
+
+        {items.map((item) => (
+          <ProductCard
+            key={item.id}
+            id={item.id}
+            category={item.category}
+            name={item.name}
+            providerName={item.providerName}
+            price={toMoney(item.price, "BRL", "pt-BR")}
+          />
+        ))}
+      </CardContainer>
+    </HomeContainer>
   );
 };
 

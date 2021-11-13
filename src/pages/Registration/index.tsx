@@ -1,9 +1,7 @@
 import React from "react";
 import { CardContainer } from "../../components/Card/style.";
 
-interface Props {}
-
-const Registration = (props: Props) => {
+const Registration = (): JSX.Element => {
   return <CardContainer>Essa é a Registration</CardContainer>;
 };
 
