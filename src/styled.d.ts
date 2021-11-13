@@ -11,6 +11,13 @@ declare module "styled-components" {
       secundaryLight: string;
       tertiaryLight: string;
 
+      primaryGrey: string;
+      secundaryGrey: string;
+      tertiaryGrey: string;
+
+      primaryBlue: string;
+      secundaryBlue: string;
+
       contrast: string;
       secundaryContrast: string;
 
