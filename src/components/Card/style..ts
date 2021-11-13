@@ -8,6 +8,7 @@ export const CardContainer = styled.div`
   padding: 0.9rem;
   margin-top: 5rem;
   height: 100vh;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
     max-width: 599px;

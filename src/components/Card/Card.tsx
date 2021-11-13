@@ -7,7 +7,7 @@ interface Props {}
 const Card = (props: Props) => {
   return (
     <CardContainer>
-      <CardHeader />
+      <CardHeader title="teste" />
     </CardContainer>
   );
 };

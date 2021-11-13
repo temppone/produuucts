@@ -1,15 +1,31 @@
 import React from "react";
-import { CardItemContainer, CardItemContent, CardItemTitle } from "./styles";
+import {
+  CardItemCategory,
+  CardItemCode,
+  CardItemContainer,
+  CardItemContent,
+  CardItemName,
+  CardItemPrice,
+  CardItemProviderName,
+} from "./styles";
 
 interface Props {
-  title: string;
+  id: number;
+  category: string;
+  name: string;
+  providerName: string;
+  price: number;
 }
 
-const CardItem = ({ title }: Props) => {
+const CardItem = ({ id, category, name, providerName, price }: Props) => {
   return (
     <CardItemContainer>
       <CardItemContent>
-        <CardItemTitle>{title}</CardItemTitle>
+        <CardItemCode>{id}</CardItemCode>
+        <CardItemName>{name}</CardItemName>
+        <CardItemCategory>{category}</CardItemCategory>
+        <CardItemProviderName>{providerName}</CardItemProviderName>
+        <CardItemPrice>{price}</CardItemPrice>
       </CardItemContent>
     </CardItemContainer>
   );

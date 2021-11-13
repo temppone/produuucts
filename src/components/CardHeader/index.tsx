@@ -1,20 +1,14 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { HeaderCardContainer } from "./style";
+import { HeaderCardContainer, HeaderCardTitle } from "./style";
 
-interface Props {}
+interface ICardHeader {
+  title: string;
+}
 
-const CardHeader = (props: Props) => {
-  const location = useLocation();
-
-  const translatePath: { [key: string]: string } = {
-    "/": "Home",
-    "/registration": "Cadastrar produtos",
-  };
-
+const CardHeader = ({ title }: ICardHeader) => {
   return (
     <HeaderCardContainer>
-      {translatePath[location.pathname]}
+      <HeaderCardTitle>{title}</HeaderCardTitle>
     </HeaderCardContainer>
   );
 };

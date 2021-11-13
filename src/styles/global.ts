@@ -20,11 +20,11 @@ export const GlobalStyle = createGlobalStyle`
 
   a{
     text-decoration: none;
-    color: ${({ theme }) => defaultTheme.palette.primaryLight};
+    color: ${({ theme }) => defaultTheme.palette.primaryDark};
   }
 
   a:hover{
-    color: ${({ theme }) => defaultTheme.palette.secundaryLight};
+    color: ${({ theme }) => defaultTheme.palette.secundaryDark};
   }
   html, body, #root{
     height: 100%;
@@ -32,8 +32,8 @@ export const GlobalStyle = createGlobalStyle`
   }
   html {
     font-size: 12px;
-    background: ${({ theme }) => defaultTheme.palette.primaryDark};
-    color: ${({ theme }) => defaultTheme.palette.primaryLight};
+    background: ${({ theme }) => defaultTheme.palette.primaryLight};
+    color: ${({ theme }) => defaultTheme.palette.primaryDark};
     font-family: 'Source Sans Pro', sans-serif;
 
     @media screen and (min-width: ${({ theme }) =>
