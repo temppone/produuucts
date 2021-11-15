@@ -41,8 +41,25 @@ export const CardProductCategory = styled.h3`
 export const CardProductDescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  width: 100%;
+  padding: 1rem 0rem 1rem 1rem;
   color: ${() => defaultTheme.palette.secundaryGrey};
+`;
+
+export const CardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const OptionsBalls = styled.div`
+  content: "";
+  display: inline-block;
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background-color: ${() => defaultTheme.palette.tertiaryGrey};
+  margin-right: 0.2rem;
 `;
 
 export const CardProductName = styled.h3`

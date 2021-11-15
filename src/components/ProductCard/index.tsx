@@ -1,5 +1,7 @@
 import React from "react";
+import Dropdown from "../Dropdown";
 import {
+  CardHeader,
   CardProductCategory,
   CardProductCode,
   CardProductCodeContainer,
@@ -10,6 +12,7 @@ import {
   CardProductPrice,
   CardProductProviderName,
   CardProductSubContainer,
+  OptionsBalls,
 } from "./styles";
 
 interface Props {
@@ -35,7 +38,15 @@ const ProductCard = ({
           <CardProductCategory>{category}</CardProductCategory>
         </CardProductCodeContainer>
         <CardProductDescriptionContainer>
-          <CardProductName>{name}</CardProductName>
+          <CardHeader>
+            <CardProductName>{name}</CardProductName>
+            <Dropdown>
+              <OptionsBalls />
+              <OptionsBalls />
+              <OptionsBalls />
+            </Dropdown>
+          </CardHeader>
+
           <CardProductSubContainer>
             <CardProductProviderName>{providerName}</CardProductProviderName>
 
