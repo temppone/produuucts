@@ -25,7 +25,7 @@ export const CardProductCodeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${() => defaultTheme.palette.secundaryGrey};
+  color: ${defaultTheme.palette.secundaryGrey};
 `;
 
 export const CardProductCode = styled.h3`
@@ -43,7 +43,7 @@ export const CardProductDescriptionContainer = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 1rem 0rem 1rem 1rem;
-  color: ${() => defaultTheme.palette.secundaryGrey};
+  color: ${defaultTheme.palette.secundaryGrey};
 `;
 
 export const CardHeader = styled.div`
@@ -58,7 +58,7 @@ export const OptionsBalls = styled.div`
   width: 0.3rem;
   height: 0.3rem;
   border-radius: 50%;
-  background-color: ${() => defaultTheme.palette.tertiaryGrey};
+  background-color: ${defaultTheme.palette.tertiaryGrey};
   margin-right: 0.2rem;
 `;
 
@@ -70,7 +70,7 @@ export const CardProductSubContainer = styled.div`
   display: flex;
   align-items: center;
   font-weight: normal;
-  color: ${() => defaultTheme.palette.tertiaryGrey};
+  color: ${defaultTheme.palette.tertiaryGrey};
 `;
 
 export const CardProductProviderName = styled.h4`

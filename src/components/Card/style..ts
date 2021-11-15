@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { defaultTheme } from "../../styles/theme";
 
 export const CardContainer = styled.div`
-  background-color: ${() => defaultTheme.palette.primaryGrey};
+  background-color: ${ defaultTheme.palette.primaryGrey};
   border-radius: 1rem 1rem 0rem 0rem;
   width: 100%;
   padding: 0.9rem;

@@ -8,10 +8,10 @@ export const InputContainer = styled.div`
   font-size: 1.2rem;
   height: 7rem;
   width: 100%;
-  @media (min-width: ${() => defaultTheme.breakpoints.xs}) {
+  @media (min-width: ${defaultTheme.breakpoints.xs}) {
     max-width: 100%;
   }
-  @media (min-width: ${() => defaultTheme.breakpoints.md}) {
+  @media (min-width: ${defaultTheme.breakpoints.md}) {
     max-width: 50%;
     margin: 0 auto;
   }
@@ -21,7 +21,7 @@ export const InputLabel = styled.label`
   font-weight: bold;
   padding: 0.4rem 0.2rem;
   font-size: 1.2rem;
-  color: ${() => defaultTheme.palette.secundaryGrey};
+  color: ${defaultTheme.palette.secundaryGrey};
 `;
 
 export const InputField = styled.input<{ inputError: string }>`
@@ -29,8 +29,8 @@ export const InputField = styled.input<{ inputError: string }>`
   padding: 1rem;
   border-radius: 0.4rem;
   transition: 0.5s;
-  background: ${() => defaultTheme.palette.primaryLight};
-  color: ${() => defaultTheme.palette.secundaryGrey};
+  background: ${defaultTheme.palette.primaryLight};
+  color: ${defaultTheme.palette.secundaryGrey};
   box-sizing: border-box;
 
   border: 0.1rem solid
@@ -45,12 +45,12 @@ export const InputField = styled.input<{ inputError: string }>`
       inputError
         ? defaultTheme.palette.warning
         : defaultTheme.palette.tertiaryLight};
-    background: ${() => defaultTheme.palette.primaryLight};
+    background: ${defaultTheme.palette.primaryLight};
   }
 `;
 
 export const InputWarning = styled.div`
   padding: 0.2rem 0.4rem;
-  color: ${() => defaultTheme.palette.warning};
+  color: ${defaultTheme.palette.warning};
   font-size: 1rem;
 `;

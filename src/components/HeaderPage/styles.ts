@@ -3,7 +3,7 @@ import { defaultTheme } from "../../styles/theme";
 
 export const HeaderPageContainer = styled.div`
   width: 100%;
-  background: ${() => defaultTheme.palette.gradientBlue};
+  background: ${defaultTheme.palette.gradientBlue};
   padding: 2rem 1rem 3rem 1rem;
   z-index: -100;
   position: absolute;
@@ -12,7 +12,7 @@ export const HeaderPageContainer = styled.div`
 export const HeaderPageTitle = styled.h1`
   padding: 1rem1rem;
   font-size: 1rem;
-  color: ${() => defaultTheme.palette.primaryLight};
+  color: ${defaultTheme.palette.primaryLight};
   font-weight: bold;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {

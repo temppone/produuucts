@@ -40,7 +40,7 @@ const ProductCard = ({
         <CardProductDescriptionContainer>
           <CardHeader>
             <CardProductName>{name}</CardProductName>
-            <Dropdown>
+            <Dropdown dropdownItems={["Editar", "Deletar"]}>
               <OptionsBalls />
               <OptionsBalls />
               <OptionsBalls />
