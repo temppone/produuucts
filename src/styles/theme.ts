@@ -8,6 +8,7 @@ export const defaultTheme: DefaultTheme = {
 
     primaryBlue: "#0082C8",
     secundaryBlue: "#00A6E8",
+    tertiaryBlue: "#3A75EC",
 
     primaryGrey: "#F5F5F5",
     secundaryGrey: "#4F4F4F",
