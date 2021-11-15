@@ -32,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   html {
     font-size: 12px;
-    background: ${() => defaultTheme.palette.primaryLight};
+    background: ${() => defaultTheme.palette.secundaryLight};
     color: ${() => defaultTheme.palette.primaryDark};
     font-family: 'Source Sans Pro', sans-serif;
 
