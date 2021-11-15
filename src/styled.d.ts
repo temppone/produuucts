@@ -17,6 +17,7 @@ declare module "styled-components" {
 
       primaryBlue: string;
       secundaryBlue: string;
+      tertiaryBlue: string;
 
       contrast: string;
       secundaryContrast: string;
