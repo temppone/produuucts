@@ -1,16 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { FooterContainer, FooterCopyright } from "./styles";
 
 const Footer = (): JSX.Element => {
   return (
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/registration">Products</Link>
-      </li>
-    </ul>
+    <FooterContainer>
+      <FooterCopyright>Alguns direitos reservados 2021</FooterCopyright>
+    </FooterContainer>
   );
 };
 
