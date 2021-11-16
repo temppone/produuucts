@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import { ButtonContainer, ButtonContent } from "./style";
 
 interface Props {
-  name: string;
+  name?: string;
   svg?: ReactElement;
   background?: string;
   color?: string;
@@ -11,6 +11,8 @@ interface Props {
   width?: string;
   padding?: string;
   fontSize?: string;
+  onClick?: () => void;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -22,12 +24,15 @@ const Button = ({
   width,
   padding,
   fontSize,
+  onClick,
+  disabled,
 }: Props): JSX.Element => {
   return (
     <ButtonContainer>
       <ButtonContent
-        type="submit"
         style={{ background, color, borderRadius, width, padding, fontSize }}
+        onClick={onClick}
+        disabled={disabled}
       >
         {svg}
         {name}
