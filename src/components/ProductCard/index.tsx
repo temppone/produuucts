@@ -1,19 +1,23 @@
 import React from "react";
 import { IProduct } from "../../@types";
+import { ReactComponent as PenSvg } from "../../assets/pen.svg";
+import { ReactComponent as TrashSvg } from "../../assets/trash.svg";
+import { defaultTheme } from "../../styles/theme";
+import { maskReais } from "../../utils/maskMoney";
 import Dropdown from "../Dropdown";
 import {
-  CardHeader,
   CardProductCategory,
   CardProductCode,
   CardProductCodeContainer,
   CardProductContainer,
   CardProductContent,
-  CardProductDescriptionContainer,
+  CardProductDropdown,
   CardProductName,
   CardProductPrice,
+  CardProductPriceCode,
   CardProductProviderName,
-  CardProductSubContainer,
-  OptionsBalls
+  CardProductRight as CardProductRight,
+  OptionsBalls,
 } from "./styles";
 
 type IProductCardProps = {
@@ -30,24 +34,30 @@ const ProductCard = ({
   onEdit,
   onDelete,
 }: IProduct & IProductCardProps): JSX.Element => {
-
   return (
     <CardProductContainer>
       <CardProductContent>
         <CardProductCodeContainer>
-          <CardProductCode>{id}</CardProductCode>
+          <CardProductName>{name}</CardProductName>
           <CardProductCategory>{category}</CardProductCategory>
+          <CardProductProviderName>{providerName}</CardProductProviderName>
         </CardProductCodeContainer>
-        <CardProductDescriptionContainer>
-          <CardHeader>
-            <CardProductName>{name}</CardProductName>
+        <CardProductRight>
+          <CardProductPriceCode>
+            <CardProductCode>#{id}</CardProductCode>
+            <CardProductPrice> {maskReais(price.toString())}</CardProductPrice>
+          </CardProductPriceCode>
+          <CardProductDropdown>
             <Dropdown
               dropdownItems={[
                 {
-                  label: "Edit",
+                  svg: <PenSvg width="15" height="15" />,
+                  label: "Editar",
                   onClick: onEdit,
                 },
                 {
+                  svg: <TrashSvg width="15" height="15" />,
+                  labelColor: defaultTheme.palette.warning,
                   label: "Deletar",
                   onClick: onDelete,
                 },
@@ -57,14 +67,8 @@ const ProductCard = ({
               <OptionsBalls />
               <OptionsBalls />
             </Dropdown>
-          </CardHeader>
-
-          <CardProductSubContainer>
-            <CardProductProviderName>{providerName}</CardProductProviderName>
-
-            <CardProductPrice>- {price}</CardProductPrice>
-          </CardProductSubContainer>
-        </CardProductDescriptionContainer>
+          </CardProductDropdown>
+        </CardProductRight>
       </CardProductContent>
     </CardProductContainer>
   );

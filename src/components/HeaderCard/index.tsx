@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { HeaderCardContainer, HeaderCardTitle } from "./style";
+import { HeaderCardContainer, HeaderCardTitle } from "./styles";
 
 interface IHeaderCard {
   title: string;

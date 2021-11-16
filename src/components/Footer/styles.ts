@@ -7,6 +7,7 @@ export const FooterContainer = styled.div`
   justify-content: center;
   background: ${defaultTheme.palette.primaryGrey};
   padding: 2rem;
+  color: ${defaultTheme.palette.secundaryGrey};
 `;
 
 export const FooterCopyright = styled.p`

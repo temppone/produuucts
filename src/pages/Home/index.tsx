@@ -1,19 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { IProduct } from "../../@types";
 import { ReactComponent as Plus } from "../../assets/plus.svg";
 import Button from "../../components/Button";
-import { CardContainer } from "../../components/Card/style.";
+import { CardContainer, CardWrapper } from "../../components/Card/styles";
 import HeaderCard from "../../components/HeaderCard";
 import HeaderPage from "../../components/HeaderPage";
+import Modal from "../../components/Modal";
 import ProductCard from "../../components/ProductCard";
-import { toMoney } from "../../core/toMoney";
-import { deleteProduct, getProducts } from "../../services/productService";
+import { useProductContext } from "../../contexts/ProductContext";
 import { EmptyProductsContainer, HomeContainer } from "./styles";
 
 const Home = (): JSX.Element => {
   const [products, setProducts] = React.useState<IProduct[]>([]);
   const navigate = useNavigate();
+  const [openModal, setOpenModal] = useState(false);
+  const { deleteProduct, getProducts } = useProductContext();
 
   useEffect(() => {
     getProducts().then(setProducts);
@@ -22,39 +25,60 @@ const Home = (): JSX.Element => {
   return (
     <HomeContainer>
       <HeaderPage headerTitle="Olá, você está na Produuucts" />
+      <CardWrapper>
+        <CardContainer>
+          <HeaderCard title="Produtos">
+            <Link to={"product/create"}>
+              <Button
+                svg={
+                  <Plus style={{ marginRight: "0.4rem", width: "0.9rem" }} />
+                }
+                name="Adicionar produto"
+              />
+            </Link>
+          </HeaderCard>
 
-      <CardContainer>
-        <HeaderCard title="Produtos">
-          <Link to={"product/create"}>
-            <Button
-              svg={<Plus style={{ marginRight: "0.4rem", width: "0.9rem" }} />}
-              name="Adicionar produto"
-            />
-          </Link>
-        </HeaderCard>
+          {products.map((item) => (
+            <div key={item.id}>
+              {openModal && (
+                <Modal
+                  header="Tem certeza que deseja deletar esse item?"
+                  body="Essa opção não pode ser desfeita"
+                  buttonName="DELETAR"
+                  onClose={() => {
+                    setOpenModal(false);
+                  }}
+                  onClick={async () => {
+                    setOpenModal(false);
 
-        {products.map((item) => (
-          <ProductCard
-            key={item.id}
-            id={item.id}
-            category={item.category}
-            name={item.name}
-            providerName={item.providerName}
-            price={toMoney(Number(item.price), "BRL", "pt-BR")}
-            onEdit={() => navigate(`/product/edit/${item.id}`)}
-            onDelete={async () => {
-              await deleteProduct(item.id);
-              await getProducts();
-            }}
-          />
-        ))}
-      </CardContainer>
+                    await deleteProduct(item.id);
+                    toast.success("Produto deletado com sucesso!");
+                    await getProducts();
+                    return;
+                  }}
+                />
+              )}
 
-      {products.length === 0 && (
-        <EmptyProductsContainer>
-          Não há nenhum produto cadastrado ainda.
-        </EmptyProductsContainer>
-      )}
+              <ProductCard
+                id={item.id}
+                category={item.category}
+                name={item.name}
+                providerName={item.providerName}
+                price={item.price}
+                onEdit={() => navigate(`/product/edit/${item.id}`)}
+                onDelete={async () => {
+                  setOpenModal(true);
+                }}
+              />
+            </div>
+          ))}
+          {!products.length && (
+            <EmptyProductsContainer>
+              Não há produto cadastrado.
+            </EmptyProductsContainer>
+          )}
+        </CardContainer>
+      </CardWrapper>
     </HomeContainer>
   );
 };

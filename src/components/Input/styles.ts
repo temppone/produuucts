@@ -8,11 +8,9 @@ export const InputContainer = styled.div`
   font-size: 1.2rem;
   height: 7rem;
   width: 100%;
-  @media (min-width: ${defaultTheme.breakpoints.xs}) {
-    max-width: 100%;
-  }
+
   @media (min-width: ${defaultTheme.breakpoints.md}) {
-    max-width: 50%;
+    width: 50%;
     margin: 0 auto;
   }
 `;

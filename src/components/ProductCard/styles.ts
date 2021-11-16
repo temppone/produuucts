@@ -16,6 +16,7 @@ export const CardProductContainer = styled.div`
 export const CardProductContent = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: row;
   padding: 1rem;
 `;
@@ -24,18 +25,11 @@ export const CardProductCodeContainer = styled.div`
   padding: 1rem 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   color: ${defaultTheme.palette.secundaryGrey};
 `;
 
-export const CardProductCode = styled.h3`
+export const CardProductCode = styled.span`
   font-size: 1.2rem;
-  padding: 0.2rem;
-`;
-
-export const CardProductCategory = styled.h3`
-  font-size: 1rem;
 `;
 
 export const CardProductDescriptionContainer = styled.div`
@@ -46,10 +40,9 @@ export const CardProductDescriptionContainer = styled.div`
   color: ${defaultTheme.palette.secundaryGrey};
 `;
 
-export const CardHeader = styled.div`
+export const CardProductRight = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  text-align: right;
 `;
 
 export const OptionsBalls = styled.div`
@@ -66,19 +59,28 @@ export const CardProductName = styled.h3`
   font-size: 1.2rem;
 `;
 
-export const CardProductSubContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: normal;
+export const CardProductCategory = styled.h3`
+  font-size: 1rem;
   color: ${defaultTheme.palette.tertiaryGrey};
 `;
 
 export const CardProductProviderName = styled.h4`
   padding: 0.2rem 0.2rem 0.2rem 0;
   font-size: 1rem;
+  color: ${defaultTheme.palette.tertiaryGrey};
 `;
 
-export const CardProductPrice = styled.h4`
+export const CardProductPrice = styled.span`
   font-size: 1rem;
   padding: 0%.2rem;
+`;
+
+export const CardProductDropdown = styled.div`
+  background-color: ${defaultTheme.palette.primaryLight};
+`;
+
+export const CardProductPriceCode = styled.h4`
+  font-size: 1rem;
+  margin-right: 1.2rem;
+  color: ${defaultTheme.palette.tertiaryGrey};
 `;

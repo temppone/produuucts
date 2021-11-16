@@ -22,7 +22,8 @@ const HeaderPage = ({ headerTitle }: IHeaderPage): JSX.Element => {
           color={defaultTheme.palette.primaryLight}
         />
       )}
-      <HeaderPageTitle>{headerTitle}</HeaderPageTitle>
+      <HeaderPageTitle>
+        {headerTitle}</HeaderPageTitle>
     </HeaderPageContainer>
   );
 };
