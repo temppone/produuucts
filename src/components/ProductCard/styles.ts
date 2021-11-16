@@ -25,17 +25,17 @@ export const CardProductCodeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   color: ${defaultTheme.palette.secundaryGrey};
 `;
 
 export const CardProductCode = styled.h3`
   font-size: 1.2rem;
-  font-weight: bold;
+  padding: 0.2rem;
 `;
 
 export const CardProductCategory = styled.h3`
   font-size: 1rem;
-  font-weight: bold;
 `;
 
 export const CardProductDescriptionContainer = styled.div`
@@ -63,7 +63,7 @@ export const OptionsBalls = styled.div`
 `;
 
 export const CardProductName = styled.h3`
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 `;
 
 export const CardProductSubContainer = styled.div`

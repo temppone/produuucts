@@ -1,4 +1,5 @@
 import React from "react";
+import { IProduct } from "../../@types";
 import Dropdown from "../Dropdown";
 import {
   CardHeader,
@@ -12,16 +13,13 @@ import {
   CardProductPrice,
   CardProductProviderName,
   CardProductSubContainer,
-  OptionsBalls,
+  OptionsBalls
 } from "./styles";
 
-interface Props {
-  id: string;
-  category: string;
-  name: string;
-  providerName: string;
-  price: string;
-}
+type IProductCardProps = {
+  onEdit: () => void;
+  onDelete: () => void;
+};
 
 const ProductCard = ({
   id,
@@ -29,7 +27,10 @@ const ProductCard = ({
   name,
   providerName,
   price,
-}: Props): JSX.Element => {
+  onEdit,
+  onDelete,
+}: IProduct & IProductCardProps): JSX.Element => {
+
   return (
     <CardProductContainer>
       <CardProductContent>
@@ -40,7 +41,18 @@ const ProductCard = ({
         <CardProductDescriptionContainer>
           <CardHeader>
             <CardProductName>{name}</CardProductName>
-            <Dropdown dropdownItems={["Editar", "Deletar"]}>
+            <Dropdown
+              dropdownItems={[
+                {
+                  label: "Edit",
+                  onClick: onEdit,
+                },
+                {
+                  label: "Deletar",
+                  onClick: onDelete,
+                },
+              ]}
+            >
               <OptionsBalls />
               <OptionsBalls />
               <OptionsBalls />

@@ -24,7 +24,7 @@ export const InputLabel = styled.label`
   color: ${defaultTheme.palette.secundaryGrey};
 `;
 
-export const InputField = styled.input<{ inputError: string }>`
+export const InputField = styled.input<{ inputError: string | undefined }>`
   width: 100%;
   padding: 1rem;
   border-radius: 0.4rem;
