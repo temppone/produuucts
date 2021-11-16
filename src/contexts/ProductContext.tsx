@@ -3,7 +3,6 @@ import React, { ReactNode, useContext } from "react";
 import { IProduct } from "../@types";
 
 type ProductContextType = {
-  products: IProduct[];
   getProducts: () => Promise<IProduct[]>;
   getProduct: (id: string) => Promise<IProduct>;
   updateProduct: (product: IProduct) => Promise<void>;
@@ -19,15 +18,14 @@ const ProductContext = React.createContext<ProductContextType>(
   {} as ProductContextType
 );
 
-export const useProductContext = () => useContext(ProductContext);
+export const useProductContext = (): ProductContextType =>
+  useContext(ProductContext);
 
 const ProductProvider = ({
   children,
 }: {
   children: ReactNode;
 }): JSX.Element => {
-  const products: IProduct[] = [];
-
   const getProducts = async (): Promise<IProduct[]> => {
     const db = await openDB<MyDB>("my-db", 1, {
       upgrade(db) {
@@ -83,7 +81,6 @@ const ProductProvider = ({
   return (
     <ProductContext.Provider
       value={{
-        products,
         getProducts,
         getProduct,
         updateProduct,
