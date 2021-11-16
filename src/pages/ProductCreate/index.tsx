@@ -5,23 +5,22 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
 import { ptShort } from "yup-locale-pt";
-import { IProduct } from "../../@types";
 import Button from "../../components/Button";
-import { CardContainer } from "../../components/Card/style.";
+import { CardContainer } from "../../components/Card/styles";
 import HeaderPage from "../../components/HeaderPage";
 import Input from "../../components/Input";
-import { numbersAndLetters } from "../../core/regex";
-import {
-  addProduct,
-  getProduct,
-  updateProduct,
-} from "../../services/productService";
+import { useProductContext } from "../../contexts/ProductContext";
+import { maskReais, unMaskReais } from "../../utils/maskMoney";
+import { numbersAndLetters } from "../../utils/regex";
 import { defaultTheme } from "../../styles/theme";
-import {
-  FormContainer,
-  RegistrationContainer,
-  ValueCodeContainer,
-} from "./styles";
+import { FormContainer, RegistrationContainer } from "./styles";
+interface IFormData {
+  name: string;
+  providerName: string;
+  price: string;
+  id: string;
+  category: string;
+}
 
 type TransltedErrorsType = {
   [key: string]: string;
@@ -31,13 +30,14 @@ const Registration = (): JSX.Element => {
   const [disabledButton, setDisabledButton] = useState(false);
   const { id: idParam } = useParams();
   const navigation = useNavigate();
+  const { updateProduct, getProduct, addProduct } = useProductContext();
 
   const translatedErrors: TransltedErrorsType = {
     "0": "Esse código já existe.",
   };
 
   yup.setLocale(ptShort);
-  const schema: yup.SchemaOf<IProduct> = yup.object({
+  const schema: yup.SchemaOf<IFormData> = yup.object({
     id: yup
       .string()
       .length(6, "O id deve ter 6 caracteres.")
@@ -55,7 +55,7 @@ const Registration = (): JSX.Element => {
     setError,
     setValue,
     formState: { errors },
-  } = useForm<IProduct>({
+  } = useForm<IFormData>({
     resolver: yupResolver<yup.AnyObjectSchema>(schema),
   });
 
@@ -66,44 +66,62 @@ const Registration = (): JSX.Element => {
         setValue("providerName", product.providerName);
         setValue("category", product.category);
         setValue("name", product.name);
-        setValue("price", product.price);
+        setValue("price", product.price.toString());
       });
     }
   }, [idParam]);
 
-  const submitProduct: SubmitHandler<IProduct> = (data) => {
+  const submitProduct: SubmitHandler<IFormData> = (data: IFormData) => {
     if (idParam) {
-      updateProduct(data)
+      updateProduct({
+        name: data.name,
+        providerName: data.providerName,
+        price: Number(unMaskReais(data.price)),
+        category: data.category,
+        id: data.id,
+      })
         .then(() => {
           toast.success("Produto atualizado!");
           navigation("/");
         })
         .catch((err) => {
+          console.log(err);
           setError("id", {
             type: "manual",
             message: translatedErrors[err.code] || "Erro",
           });
-          return "Algo deu errado";
+          return err.message;
         });
+
+      return;
     }
 
-    toast.promise(addProduct(data), {
-      loading: "Cadastrando...",
-      success: () => {
-        setDisabledButton(true);
-        navigation("/");
-        return "Cadastrado!";
-      },
-      error: (err) => {
-        setDisabledButton(false);
+    toast.promise(
+      addProduct({
+        name: data.name,
+        providerName: data.providerName,
+        price: Number(unMaskReais(data.price)),
+        category: data.category,
+        id: data.id,
+      }),
+      {
+        loading: "Cadastrando...",
+        success: () => {
+          setDisabledButton(true);
+          navigation("/");
+          return "Cadastrado!";
+        },
+        error: (err) => {
+          setDisabledButton(false);
 
-        setError("id", {
-          type: "manual",
-          message: translatedErrors[err.code] || "Erro",
-        });
-        return "Algo deu errado";
-      },
-    });
+          setError("id", {
+            type: "manual",
+            message: translatedErrors[err.code] || "Erro",
+          });
+          return err.message;
+        },
+      }
+    );
   };
 
   return (
@@ -155,45 +173,41 @@ const Registration = (): JSX.Element => {
               />
             )}
           />
+          <Controller
+            control={control}
+            name="price"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                label="Valor do produto"
+                onChange={onChange}
+                onBlur={onBlur}
+                value={maskReais(value || "")}
+                inputError={errors?.price?.message}
+                placeholder="R$ 0,00"
+              />
+            )}
+          />
 
-          <ValueCodeContainer>
-            <Controller
-              control={control}
-              name="price"
-              render={({ field: { onChange, onBlur, value } }) => (
-                <Input
-                  label="Valor do produto"
-                  onChange={onChange}
-                  onBlur={onBlur}
-                  value={value}
-                  inputError={errors?.price?.message}
-                  placeholder="R$ 0,00"
-                />
-              )}
-            />
-
-            <Controller
-              control={control}
-              name="id"
-              render={({ field: { onChange, onBlur, value } }) => (
-                <Input
-                  label="Código do produto"
-                  onChange={onChange}
-                  onBlur={onBlur}
-                  value={value}
-                  inputError={errors?.id?.message}
-                  placeholder="1a2b3c"
-                />
-              )}
-            />
-          </ValueCodeContainer>
+          <Controller
+            control={control}
+            name="id"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                label="Código do produto"
+                onChange={onChange}
+                onBlur={onBlur}
+                value={value}
+                inputError={errors?.id?.message}
+                placeholder="1a2b3c"
+              />
+            )}
+          />
 
           <Button
             name="CADASTRAR PRODUTO"
             background={defaultTheme.palette.tertiaryBlue}
             color={defaultTheme.palette.primaryLight}
             borderRadius="0.3rem"
-            width="100%"
             padding="1rem"
             fontSize="1rem"
             disabled={disabledButton}
