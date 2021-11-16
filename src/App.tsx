@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import Loading from "./components/Loading";
 import ProductProvider from "./contexts/ProductContext";
 import { GlobalStyle } from "./styles/global";
 import { defaultTheme } from "./styles/theme";
@@ -16,7 +17,7 @@ function App(): JSX.Element {
     <div className="App">
       <ThemeProvider theme={defaultTheme}>
         <ProductProvider>
-          <Suspense fallback={<div>carregando</div>}>
+          <Suspense fallback={<Loading />}>
             <GlobalStyle />
             <Toaster />
             <main className="AppBody">
