@@ -59,6 +59,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     .AppBody{
       flex: 1;
+      background: ${defaultTheme.palette.primaryGrey};
     }
   }
 `;
