@@ -43,13 +43,13 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 15px;
     }
     @media screen and (min-width: ${defaultTheme.breakpoints.md}){
-      font-size: 17px;
+      font-size: 15px;
     }
     @media screen and (min-width: ${defaultTheme.breakpoints.lg}){
-      font-size: 17px;
+      font-size: 16px;
     }
     @media screen and (min-width: ${defaultTheme.breakpoints.xl}){
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .App{
