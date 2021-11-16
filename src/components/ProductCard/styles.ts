@@ -14,7 +14,7 @@ export const CardProductContainer = styled.div`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     width: 960px;
-    margin: 0 auto;
+    margin: 1rem auto;
   }
 `;
 

@@ -204,7 +204,7 @@ const Registration = (): JSX.Element => {
           />
 
           <Button
-            name="CADASTRAR PRODUTO"
+            name={idParam ? "EDITAR PRODUTO" : "CADASTRAR PRODUTO"}
             background={defaultTheme.palette.tertiaryBlue}
             color={defaultTheme.palette.primaryLight}
             borderRadius="0.3rem"
