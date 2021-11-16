@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactElement } from "react";
-import { ButtonContainer, ButtonContent } from "./style";
+import { ButtonContainer, ButtonContent } from "./styles";
 
 interface Props {
   name?: string;
@@ -35,7 +35,7 @@ const Button = ({
         disabled={disabled}
       >
         {svg}
-        {name}
+        <span>{name}</span>
       </ButtonContent>
     </ButtonContainer>
   );
