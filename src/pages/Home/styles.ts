@@ -7,10 +7,10 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   position: relative;
   border-radius: 1rem;
   text-align: center;
+  width: 100%;
 `;
 
 export const EmptyProductsContainer = styled.div`
@@ -18,5 +18,4 @@ export const EmptyProductsContainer = styled.div`
   color: ${defaultTheme.palette.secundaryGrey};
   padding: 2rem;
   font-size: 1.4rem;
-  height: 100vw;
 `;
