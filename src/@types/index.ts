@@ -3,5 +3,5 @@ export interface IProduct {
   category: string;
   name: string;
   providerName: string;
-  price: string;
+  price: number;
 }
