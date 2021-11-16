@@ -7,12 +7,11 @@ export const RegistrationContainer = styled.div`
 `;
 
 export const ValueCodeContainer = styled.div`
-  width: 100%;
   display: flex;
+  width: 100%;
   gap: 1rem;
 `;
 
-
 export const FormContainer = styled.form`
-  background-color: ${defaultTheme.palette.secundaryLight};
-`
+  background-color: transparent;
+`;
