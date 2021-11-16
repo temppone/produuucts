@@ -8,6 +8,11 @@ export const HeaderCardContainer = styled.div`
   color: ${defaultTheme.palette.secundaryGrey};
   background-color: transparent;
   padding: 1rem 0;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 960px;
+    margin: 0 auto;
+  }
 `;
 
 export const HeaderCardTitle = styled.h3`

@@ -16,9 +16,9 @@ export const ModalContainer = styled.div`
 `;
 
 export const CloseButton = styled.div`
-  width: 100%;
   display: flex;
   justify-content: flex-end;
+  float: right;
 `;
 
 export const ModalContent = styled.div`
@@ -28,6 +28,16 @@ export const ModalContent = styled.div`
   padding: 1rem;
   text-align: center;
   color: ${defaultTheme.palette.secundaryGrey};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    max-width: 20%;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    max-width: 25%;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
+    width: 27%;
+  }
 `;
 
 export const ModalHeader = styled.div`

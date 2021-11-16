@@ -11,7 +11,6 @@ export const InputContainer = styled.div`
 
   @media (min-width: ${defaultTheme.breakpoints.md}) {
     width: 50%;
-    margin: 0 auto;
   }
 `;
 

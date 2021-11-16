@@ -4,15 +4,30 @@ import { defaultTheme } from "../../styles/theme";
 export const HeaderPageContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-content: center;
   align-items: center;
   flex-direction: row;
-  width: 100%;
   background: ${defaultTheme.palette.gradientBlue};
   position: absolute;
   padding: 1rem 1rem 3em 1rem;
   top: 0;
+  width: 100%;
 `;
+
+export const HeaderPageContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 960px;
+    margin: 0 auto;
+  }
+`;
+
+export const HeaderTitleContainer = styled.div``;
+
+export const HeaderButtonContainer = styled.div``;
 
 export const HeaderPageTitle = styled.h1`
   padding: 1rem;

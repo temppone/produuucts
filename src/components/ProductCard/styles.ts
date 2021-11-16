@@ -11,6 +11,11 @@ export const CardProductContainer = styled.div`
   :hover {
     box-shadow: rgba(149, 157, 165, 0.4) 0px 1px 2px 0px;
   }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 960px;
+    margin: 0 auto;
+  }
 `;
 
 export const CardProductContent = styled.div`
@@ -26,6 +31,7 @@ export const CardProductCodeContainer = styled.div`
   display: flex;
   flex-direction: column;
   color: ${defaultTheme.palette.secundaryGrey};
+  text-align: left;
 `;
 
 export const CardProductCode = styled.span`
@@ -80,6 +86,8 @@ export const CardProductDropdown = styled.div`
 `;
 
 export const CardProductPriceCode = styled.h4`
+  display: flex;
+  flex-direction: column;
   font-size: 1rem;
   margin-right: 1.2rem;
   color: ${defaultTheme.palette.tertiaryGrey};

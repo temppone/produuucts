@@ -24,7 +24,7 @@ const Home = (): JSX.Element => {
 
   return (
     <HomeContainer>
-      <HeaderPage headerTitle="Olá, você está na Produuucts" />
+      <HeaderPage headerTitle="Produuucts" />
       <CardWrapper>
         <CardContainer>
           <HeaderCard title="Produtos">

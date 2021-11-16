@@ -38,9 +38,9 @@ const ProductCard = ({
     <CardProductContainer>
       <CardProductContent>
         <CardProductCodeContainer>
-          <CardProductName>{name}</CardProductName>
-          <CardProductCategory>{category}</CardProductCategory>
-          <CardProductProviderName>{providerName}</CardProductProviderName>
+          <CardProductName>Nome: {name}</CardProductName>
+          <CardProductCategory>Categoria: {category}</CardProductCategory>
+          <CardProductProviderName>Fornecedor: {providerName}</CardProductProviderName>
         </CardProductCodeContainer>
         <CardProductRight>
           <CardProductPriceCode>

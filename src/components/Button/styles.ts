@@ -3,6 +3,11 @@ import { defaultTheme } from "../../styles/theme";
 
 export const ButtonContainer = styled.div`
   color: ${defaultTheme.palette.gradientBlue};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const ButtonContent = styled.button`

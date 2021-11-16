@@ -1,7 +1,13 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../Button";
-import { HeaderPageContainer, HeaderPageTitle } from "./styles";
+import {
+  HeaderButtonContainer,
+  HeaderPageContainer,
+  HeaderPageContent,
+  HeaderPageTitle,
+  HeaderTitleContainer,
+} from "./styles";
 import { ReactComponent as BackSvg } from "../../assets/back.svg";
 import { defaultTheme } from "../../styles/theme";
 
@@ -15,15 +21,20 @@ const HeaderPage = ({ headerTitle }: IHeaderPage): JSX.Element => {
 
   return (
     <HeaderPageContainer>
-      {location.pathname !== "/" && (
-        <Button
-          onClick={() => navigate(-1)}
-          svg={<BackSvg />}
-          color={defaultTheme.palette.primaryLight}
-        />
-      )}
-      <HeaderPageTitle>
-        {headerTitle}</HeaderPageTitle>
+      <HeaderPageContent>
+        <HeaderButtonContainer>
+          {location.pathname !== "/" && (
+            <Button
+              onClick={() => navigate(-1)}
+              svg={<BackSvg />}
+              color={defaultTheme.palette.primaryLight}
+            />
+          )}
+        </HeaderButtonContainer>
+        <HeaderTitleContainer>
+          <HeaderPageTitle>{headerTitle}</HeaderPageTitle>
+        </HeaderTitleContainer>
+      </HeaderPageContent>
     </HeaderPageContainer>
   );
 };
