@@ -3,10 +3,10 @@
 
 SPA mobile first desenvolvido em React.js
 
-O **Produuucts** é um crud de produtos, nele é possível cadastrar, editar, visualizar e deletar qualquer produto
-Na tela inicial você consegue ver uma lista com todos os produtos já cadastrados
-No botão "adicionar um produto" você consegue adicionar um produto
-No botão do card de produto é possível deletar ou editar um produto
+- O **Produuucts** é um crud de produtos, nele é possível cadastrar, editar, visualizar e deletar qualquer produto
+- Na tela inicial você consegue ver uma lista com todos os produtos já cadastrados
+- No botão "adicionar um produto" você consegue adicionar um produto
+- No botão do card de produto é possível deletar ou editar um produto
 
 ### Bibliotecas
 
