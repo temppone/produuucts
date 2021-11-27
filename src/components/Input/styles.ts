@@ -51,3 +51,14 @@ export const InputWarning = styled.div`
   color: ${defaultTheme.palette.warning};
   font-size: 1rem;
 `;
+
+export const InputList = styled.ul`
+  background-color: tomato;
+  z-index: 999;
+  border-radius: 0.4rem;
+`;
+
+export const InputListItem = styled.li`
+  background-color: tomato;
+  padding: 1rem;
+`;

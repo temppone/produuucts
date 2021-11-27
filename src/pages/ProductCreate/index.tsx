@@ -36,6 +36,25 @@ const Registration = (): JSX.Element => {
     "0": "Esse código já existe.",
   };
 
+  const categories = [
+    {
+      id: "1",
+      name: "Celulares",
+    },
+    {
+      id: "2",
+      name: "Notebooks",
+    },
+    {
+      id: "3",
+      name: "Tablets",
+    },
+    {
+      id: "4",
+      name: "Acessórios",
+    },
+  ];
+
   yup.setLocale(ptShort);
   const schema: yup.SchemaOf<IFormData> = yup.object({
     id: yup
@@ -142,6 +161,7 @@ const Registration = (): JSX.Element => {
                 value={value}
                 inputError={errors?.category?.message}
                 placeholder="Digite uma categoria"
+                inputList={categories}
               />
             )}
           />

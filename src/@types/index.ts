@@ -5,3 +5,8 @@ export interface IProduct {
   providerName: string;
   price: number;
 }
+
+export type IInputListItem = {
+  id: string;
+  name: string;
+};
