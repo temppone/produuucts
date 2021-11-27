@@ -5,6 +5,7 @@ import { IProduct } from "../../@types";
 import { ReactComponent as Plus } from "../../assets/plus.svg";
 import Button from "../../components/Button";
 import { CardContainer, CardWrapper } from "../../components/Card/styles";
+import Head from "../../components/Head";
 import HeaderCard from "../../components/HeaderCard";
 import HeaderPage from "../../components/HeaderPage";
 import Modal from "../../components/Modal";
@@ -24,6 +25,7 @@ const Home = (): JSX.Element => {
 
   return (
     <HomeContainer>
+      <Head title="Home" description="Essa é a tela inícial do Produuucts" />
       <HeaderPage headerTitle="Produuucts" />
       <CardWrapper>
         <CardContainer>

@@ -14,6 +14,7 @@ import { maskReais, unMaskReais } from "../../utils/maskMoney";
 import { numbersAndLetters } from "../../utils/regex";
 import { defaultTheme } from "../../styles/theme";
 import { FormContainer, RegistrationContainer } from "./styles";
+import Head from "../../components/Head";
 interface IFormData {
   name: string;
   providerName: string;
@@ -145,6 +146,14 @@ const Registration = (): JSX.Element => {
 
   return (
     <RegistrationContainer>
+      <Head
+        title={idParam ? "Editar produto" : "Cadastrar produto"}
+        description={
+          idParam
+            ? "Essa é a tela de edição de produto"
+            : "Essa é a tela de criação de produto"
+        }
+      />
       <HeaderPage
         headerTitle={idParam ? "Editar produto" : "Adicionar produto"}
       />
