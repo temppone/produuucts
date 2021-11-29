@@ -1,6 +1,6 @@
 import { DBSchema, openDB } from "idb";
 import React, { ReactNode, useContext } from "react";
-import { IProduct } from "../@types";
+import { ICategory, IProduct } from "../@types";
 
 type ProductContextType = {
   getProducts: () => Promise<IProduct[]>;
@@ -8,10 +8,12 @@ type ProductContextType = {
   updateProduct: (product: IProduct) => Promise<void>;
   deleteProduct: (id: string) => Promise<void>;
   addProduct: (product: IProduct) => Promise<void>;
+  addCategory: (product: ICategory) => Promise<void>;
 };
 
 interface MyDB extends DBSchema {
   products: { value: IProduct; key: string };
+  categories: { value: ICategory; key: string };
 }
 
 const ProductContext = React.createContext<ProductContextType>(
@@ -26,6 +28,15 @@ const ProductProvider = ({
 }: {
   children: ReactNode;
 }): JSX.Element => {
+  const addCategory = async (category: ICategory): Promise<void> => {
+    const db = await openDB<MyDB>("my-db", 1, {
+      upgrade(db) {
+        db.createObjectStore("categories", { keyPath: "id" });
+      },
+    });
+    await db.add("categories", category);
+  };
+
   const getProducts = async (): Promise<IProduct[]> => {
     const db = await openDB<MyDB>("my-db", 1, {
       upgrade(db) {
@@ -86,6 +97,7 @@ const ProductProvider = ({
         updateProduct,
         deleteProduct,
         addProduct,
+        addCategory,
       }}
     >
       {children}
