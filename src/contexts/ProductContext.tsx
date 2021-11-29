@@ -90,12 +90,6 @@ const ProductProvider = ({
     await db.add("products", product);
   };
 
-  useEffect(() => {
-    ProductsPopulator.products.map((product: IProduct) => {
-      addProduct(product);
-    });
-  }, []);
-
   return (
     <ProductContext.Provider
       value={{
