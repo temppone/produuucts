@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Loading from "./components/Loading";
 import ProductProvider from "./contexts/ProductContext";
+import { useThemeModeContext } from "./contexts/ThemeModeContext";
 import { GlobalStyle } from "./styles/global";
-import { defaultTheme } from "./styles/theme";
+import { darkTheme, defaultTheme } from "./styles/theme";
 
 const Home = lazy(() => import("./pages/Home"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -13,9 +14,11 @@ const ProductCreate = lazy(() => import("./pages/ProductCreate"));
 const Footer = lazy(() => import("./components/Footer"));
 
 function App(): JSX.Element {
+  const { actualTheme } = useThemeModeContext();
+
   return (
     <div className="App">
-      <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider theme={actualTheme === "dark" ? darkTheme : defaultTheme}>
         <ProductProvider>
           <Suspense fallback={<Loading />}>
             <GlobalStyle />

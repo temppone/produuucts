@@ -1,19 +1,22 @@
 import styled from "styled-components";
-import { defaultTheme } from "../../styles/theme";
 
 export const CardProductContainer = styled.div`
   width: 100%;
   margin-bottom: 1rem;
-  background-color: ${defaultTheme.palette.primaryLight};
+  background-color: ${({ theme }) => theme.palette.primaryLight};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     width: 1024px;
     margin: 1rem auto;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-      margin: 0 auto;
-      border-bottom: 1px solid ${defaultTheme.palette.primaryGrey};
+    :hover {
+      background-color: ${({ theme }) => theme.palette.secundaryLight};
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin: 0 auto;
+    border-bottom: 1px solid ${({ theme }) => theme.palette.primaryGrey};
   }
 `;
 
@@ -35,7 +38,7 @@ export const CardProductDescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: ${defaultTheme.palette.secundaryGrey};
+  color: ${({ theme }) => theme.palette.secundaryGrey};
   padding: 1rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -50,7 +53,7 @@ export const CardProductItem = styled.div`
   border-radius: 0.4rem;
   align-items: center;
   :nth-child(2n + 1) {
-    background-color: ${defaultTheme.palette.secundaryLight};
+    background-color: ${({ theme }) => theme.palette.secundaryLight};
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -58,14 +61,14 @@ export const CardProductItem = styled.div`
     justify-content: center;
     align-items: center;
     :nth-child(2n + 1) {
-      background-color: ${defaultTheme.palette.primaryLight};
+      background-color: transparent;
     }
   }
 `;
 
 export const CardProductLabel = styled.span`
   font-size: 1.2rem;
-  color: ${defaultTheme.palette.tertiaryGrey};
+  color: ${({ theme }) => theme.palette.tertiaryGrey};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
@@ -78,7 +81,7 @@ export const OptionsBalls = styled.div`
   width: 0.3rem;
   height: 0.3rem;
   border-radius: 50%;
-  background-color: ${defaultTheme.palette.tertiaryGrey};
+  background-color: ${({ theme }) => theme.palette.tertiaryGrey};
   margin-right: 0.2rem;
 `;
 
@@ -108,8 +111,8 @@ export const CardProductProviderName = styled.span`
   font-weight: bold;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-      text-align: left;
-      width: 6rem;
+    text-align: left;
+    width: 6rem;
   }
 `;
 
@@ -124,7 +127,7 @@ export const CardProductPrice = styled.span`
 `;
 
 export const CardProductDropdown = styled.div`
-  background-color: ${defaultTheme.palette.primaryLight};
+  background-color: transparent;
 `;
 
 export const CardProductItemDesktop = styled.div`

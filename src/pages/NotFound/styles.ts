@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { defaultTheme } from "../../styles/theme";
 
 export const NotFoundContainer = styled.div`
-  background-color: ${defaultTheme.palette.primaryGrey};
+  background-color: ${({ theme }) => theme.palette.primaryGrey};
   display: flex;
   flex-direction: column;
   justify-content: center;

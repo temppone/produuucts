@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { defaultTheme } from "../../styles/theme";
 
 export const ButtonContainer = styled.div`
-  color: ${defaultTheme.palette.gradientBlue};
+  color: ${({ theme }) => theme.palette.gradientBlue};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,15 +16,15 @@ export const ButtonContent = styled.button`
   justify-content: center;
   padding: 0.5rem;
   background-color: transparent;
-  color: ${defaultTheme.palette.primaryBlue};
+  color: ${({ theme }) => theme.palette.primaryBlue};
   cursor: pointer;
   width: 100%;
 
   :hover {
-    color: ${defaultTheme.palette.secundaryBlue};
+    color: ${({ theme }) => theme.palette.secundaryBlue};
     svg {
       path {
-        fill: ${defaultTheme.palette.secundaryBlue};
+        fill: ${({ theme }) => theme.palette.secundaryBlue};
       }
     }
   }

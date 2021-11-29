@@ -1,15 +1,15 @@
 import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ReactComponent as BackSvg } from "../../assets/back.svg";
+import { defaultTheme } from "../../styles/theme";
 import Button from "../Button";
 import {
   HeaderButtonContainer,
   HeaderPageContainer,
   HeaderPageContent,
   HeaderPageTitle,
-  HeaderTitleContainer,
+  HeaderTitleContainer
 } from "./styles";
-import { ReactComponent as BackSvg } from "../../assets/back.svg";
-import { defaultTheme } from "../../styles/theme";
 
 interface IHeaderPage {
   headerTitle?: string;
@@ -31,6 +31,7 @@ const HeaderPage = ({ headerTitle }: IHeaderPage): JSX.Element => {
             />
           )}
         </HeaderButtonContainer>
+
         <HeaderTitleContainer>
           <HeaderPageTitle>{headerTitle}</HeaderPageTitle>
         </HeaderTitleContainer>

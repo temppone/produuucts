@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { defaultTheme } from "../../styles/theme";
 
 export const HomeContainer = styled.div`
-  background-color: ${defaultTheme.palette.primaryGrey};
+  background-color: ${({ theme }) => theme.palette.primaryGrey};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,10 +23,10 @@ export const HeaderList = styled.div`
     margin-top: 1rem;
     margin: 0 auto;
     padding: 1rem;
-    background-color: ${defaultTheme.palette.primaryLight};
-    color: ${defaultTheme.palette.tertiaryGrey};
+    background-color: ${({ theme }) => theme.palette.primaryLight};
+    color: ${({ theme }) => theme.palette.tertiaryGrey};
     border-radius: 1rem 1rem 0 0;
-    border-bottom: 1px solid ${defaultTheme.palette.primaryGrey};
+    border-bottom: 1px solid ${({ theme }) => theme.palette.primaryGrey};
   }
 `;
 
@@ -38,8 +37,8 @@ export const HeaderListItem = styled.div`
 `;
 
 export const EmptyProductsContainer = styled.div`
-  background-color: ${defaultTheme.palette.primaryGrey};
-  color: ${defaultTheme.palette.secundaryGrey};
+  background-color: ${({ theme }) => theme.palette.primaryGrey};
+  color: ${({ theme }) => theme.palette.secundaryGrey};
   padding: 2rem;
   font-size: 1.4rem;
 `;
@@ -61,7 +60,7 @@ export const HeaderListName = styled.div`
 export const HeaderListCategory = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     text-align: left;
-    width: 5rem;
+    width: 6rem;
   }
 `;
 
@@ -75,7 +74,7 @@ export const HeaderListProvider = styled.div`
 export const HeaderListPrice = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     text-align: left;
-    width: 6rem;
+    width: 5rem;
   }
 `;
 

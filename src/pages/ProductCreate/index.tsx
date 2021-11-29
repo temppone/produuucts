@@ -7,14 +7,14 @@ import * as yup from "yup";
 import { ptShort } from "yup-locale-pt";
 import Button from "../../components/Button";
 import { CardContainer } from "../../components/Card/styles";
+import Head from "../../components/Head";
 import HeaderPage from "../../components/HeaderPage";
 import Input from "../../components/Input";
 import { useProductContext } from "../../contexts/ProductContext";
+import { defaultTheme } from "../../styles/theme";
 import { maskReais, unMaskReais } from "../../utils/maskMoney";
 import { numbersAndLetters } from "../../utils/regex";
-import { defaultTheme } from "../../styles/theme";
 import { FormContainer, RegistrationContainer } from "./styles";
-import Head from "../../components/Head";
 interface IFormData {
   name: string;
   providerName: string;
@@ -121,12 +121,11 @@ const Registration = (): JSX.Element => {
           navigation("/");
         })
         .catch((err) => {
-          console.log(err);
           setError("id", {
             type: "manual",
             message: translatedErrors[err.code] || "Erro",
           });
-          return err.message;
+          return translatedErrors[err.code] || "Erro";
         });
 
       return;
@@ -154,7 +153,7 @@ const Registration = (): JSX.Element => {
             type: "manual",
             message: translatedErrors[err.code] || "Erro",
           });
-          return err.message;
+          return translatedErrors[err.code] || "Erro";
         },
       }
     );

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { defaultTheme } from "../../styles/theme";
 
 type DropdownProps = {
   ref?:
@@ -30,10 +29,10 @@ export const DropdownListContainer = styled.div`
 export const DropdownList = styled.ul<DropdownProps>`
   width: 30%;
   margin: 0;
-  background-color: ${defaultTheme.palette.primaryLight};
-  border: 1px solid ${defaultTheme.palette.primaryGrey};
+  background-color: ${({ theme }) => theme.palette.primaryLight};
+  border: 1px solid ${({ theme }) => theme.palette.primaryGrey};
   border-radius: 0.3rem;
-  color: ${defaultTheme.palette.secundaryGrey};
+  color: ${({ theme }) => theme.palette.secundaryGrey};
   font-size: 1rem;
   position: absolute;
   padding: 0.5rem;
@@ -45,7 +44,7 @@ export const DropdownList = styled.ul<DropdownProps>`
     max-width: 13%;
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
-    width: 12%;
+    width: 10%;
   }
 
   &:first-child {
@@ -63,7 +62,7 @@ export const DropdownItem = styled.li`
   cursor: pointer;
 
   &:hover {
-    background-color: ${defaultTheme.palette.primaryGrey};
+    background-color: ${({ theme }) => theme.palette.primaryGrey};
   }
 `;
 

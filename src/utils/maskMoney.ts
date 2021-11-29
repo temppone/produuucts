@@ -6,7 +6,5 @@ export const maskReais = (value: string): string => {
 };
 
 export const unMaskReais = (value: number | string): number | string => {
-  return typeof value === "number"
-    ? value
-    : Number(value.replace(/\D/g, "")) / 100;
+  return typeof value === "number" ? value : Number(value.replace(/\D/g, ""));
 };

@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { defaultTheme } from "../../styles/theme";
-
 export const LoadingContainer = styled.div`
   padding: 0;
   margin: 0;
@@ -15,7 +13,7 @@ export const LoadingWrapper = styled.div`
   position: relative;
   width: 256px;
   height: 4px;
-  background: ${defaultTheme.palette.tertiaryLight};
+  background: ${({ theme }) => theme.palette.tertiaryLight};
   border-radius: 1rem;
 `;
 
@@ -24,7 +22,7 @@ export const LoadingContent = styled.div`
   width: 0px;
   height: 4px;
   left: 0px;
-  background: ${defaultTheme.palette.primaryBlue};
+  background: ${({ theme }) => theme.palette.primaryBlue};
   animation: 2s infinite linear loadingAnimation;
 
   @keyframes loadingAnimation {

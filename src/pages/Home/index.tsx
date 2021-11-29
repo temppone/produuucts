@@ -16,10 +16,11 @@ import {
   HeaderList,
   HeaderListActions,
   HeaderListCategory,
-  HeaderListCode, HeaderListName,
+  HeaderListCode,
+  HeaderListName,
   HeaderListPrice,
   HeaderListProvider,
-  HomeContainer
+  HomeContainer,
 } from "./styles";
 
 const Home = (): JSX.Element => {
@@ -27,6 +28,7 @@ const Home = (): JSX.Element => {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const { deleteProduct, getProducts } = useProductContext();
+  const [productToDelete, setProductToDelete] = useState("");
 
   useEffect(() => {
     getProducts().then(setProducts);
@@ -57,7 +59,7 @@ const Home = (): JSX.Element => {
               <HeaderListCategory>Categoria</HeaderListCategory>
               <HeaderListProvider>Fornecedor</HeaderListProvider>
               <HeaderListPrice>Preço</HeaderListPrice>
-              <HeaderListActions>Actions</HeaderListActions>
+              <HeaderListActions>Ações</HeaderListActions>
             </HeaderList>
           )}
 
@@ -66,7 +68,7 @@ const Home = (): JSX.Element => {
               {openModal && (
                 <Modal
                   header="Tem certeza que deseja deletar esse item?"
-                  body="Essa opção não pode ser desfeita"
+                  body="Essa ação não pode ser desfeita"
                   buttonName="DELETAR"
                   onClose={() => {
                     setOpenModal(false);
@@ -74,7 +76,7 @@ const Home = (): JSX.Element => {
                   onClick={async () => {
                     setOpenModal(false);
 
-                    await deleteProduct(item.id);
+                   await  deleteProduct(productToDelete);
                     toast.success("Produto deletado com sucesso!");
                     await getProducts();
                     return;
@@ -89,8 +91,9 @@ const Home = (): JSX.Element => {
                 providerName={item.providerName}
                 price={item.price}
                 onEdit={() => navigate(`/product/edit/${item.id}`)}
-                onDelete={async () => {
+                onDelete={() => {
                   setOpenModal(true);
+                  setProductToDelete(item.id);
                 }}
               />
             </div>

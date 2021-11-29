@@ -1,6 +1,7 @@
 import { DBSchema, openDB } from "idb";
-import React, { ReactNode, useContext } from "react";
+import React, { ReactNode, useContext, useEffect } from "react";
 import { ICategory, IProduct } from "../@types";
+import { ProductsPopulator } from "../data/ProductsPopulator";
 
 type ProductContextType = {
   getProducts: () => Promise<IProduct[]>;
@@ -88,6 +89,12 @@ const ProductProvider = ({
 
     await db.add("products", product);
   };
+
+  useEffect(() => {
+    ProductsPopulator.products.map((product: IProduct) => {
+      addProduct(product);
+    });
+  }, []);
 
   return (
     <ProductContext.Provider

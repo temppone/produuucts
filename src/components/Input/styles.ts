@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { defaultTheme } from "../../styles/theme";
 
 export const InputContainer = styled.div`
   display: flex;
@@ -9,7 +8,7 @@ export const InputContainer = styled.div`
   height: 7rem;
   width: 100%;
 
-  @media (min-width: ${defaultTheme.breakpoints.md}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     width: 50%;
   }
 `;
@@ -18,7 +17,7 @@ export const InputLabel = styled.label`
   font-weight: bold;
   padding: 0.4rem 0.2rem;
   font-size: 1.2rem;
-  color: ${defaultTheme.palette.secundaryGrey};
+  color: ${({ theme }) => theme.palette.secundaryGrey};
 `;
 
 export const InputField = styled.input<{ inputError: string | undefined }>`
@@ -26,29 +25,29 @@ export const InputField = styled.input<{ inputError: string | undefined }>`
   padding: 1rem;
   border-radius: 0.4rem;
   transition: 0.5s;
-  background: ${defaultTheme.palette.primaryLight};
-  color: ${defaultTheme.palette.secundaryGrey};
+  background: ${({ theme }) => theme.palette.primaryLight};
+  color: ${({ theme }) => theme.palette.secundaryGrey};
   box-sizing: border-box;
 
   border: 0.1rem solid
     ${({ inputError }) =>
       inputError
-        ? defaultTheme.palette.warning
-        : defaultTheme.palette.secundaryLight};
+        ? ({ theme }) => theme.palette.warning
+        : ({ theme }) => theme.palette.secundaryLight};
 
   :hover,
   :focus {
     border-color: ${({ inputError }) =>
       inputError
-        ? defaultTheme.palette.warning
-        : defaultTheme.palette.tertiaryLight};
-    background: ${defaultTheme.palette.primaryLight};
+        ? ({ theme }) => theme.palette.warning
+        : ({ theme }) => theme.palette.tertiaryLight};
+    background: ${({ theme }) => theme.palette.primaryLight};
   }
 `;
 
 export const InputWarning = styled.div`
   padding: 0.2rem 0.4rem;
-  color: ${defaultTheme.palette.warning};
+  color: ${({ theme }) => theme.palette.warning};
   font-size: 1rem;
 `;
 
@@ -59,7 +58,7 @@ export const InputListContainer = styled.div`
 `;
 
 export const InputList = styled.ul`
-  background-color: ${defaultTheme.palette.primaryLight};
+  background-color: ${({ theme }) => theme.palette.primaryLight};
   z-index: 999;
   border-radius: 0.4rem;
   list-style: none;
@@ -69,13 +68,13 @@ export const InputList = styled.ul`
 `;
 
 export const InputListItem = styled.li`
-  background-color: ${defaultTheme.palette.primaryLight};
+  background-color: ${({ theme }) => theme.palette.primaryLight};
   padding: 0.9rem;
   cursor: pointer;
   border-radius: 0.4rem;
-  color: ${defaultTheme.palette.secundaryGrey};
+  color: ${({ theme }) => theme.palette.secundaryGrey};
 
   :hover {
-    background-color: ${defaultTheme.palette.secundaryLight};
+    background-color: ${({ theme }) => theme.palette.secundaryLight};
   }
 `;
