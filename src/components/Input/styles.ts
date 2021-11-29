@@ -52,13 +52,30 @@ export const InputWarning = styled.div`
   font-size: 1rem;
 `;
 
+export const InputListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+`;
+
 export const InputList = styled.ul`
-  background-color: tomato;
+  background-color: ${defaultTheme.palette.primaryLight};
   z-index: 999;
   border-radius: 0.4rem;
+  list-style: none;
+  padding: 0.1rem;
+  font-size: 0.8rem;
+  overflow-y: scroll;
 `;
 
 export const InputListItem = styled.li`
-  background-color: tomato;
-  padding: 1rem;
+  background-color: ${defaultTheme.palette.primaryLight};
+  padding: 0.9rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  color: ${defaultTheme.palette.secundaryGrey};
+
+  :hover {
+    background-color: ${defaultTheme.palette.secundaryLight};
+  }
 `;

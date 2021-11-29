@@ -3,52 +3,73 @@ import { defaultTheme } from "../../styles/theme";
 
 export const CardProductContainer = styled.div`
   width: 100%;
-  border-radius: 0.5rem;
   margin-bottom: 1rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 1px 2px 0px;
   background-color: ${defaultTheme.palette.primaryLight};
 
-  :hover {
-    box-shadow: rgba(149, 157, 165, 0.4) 0px 1px 2px 0px;
-  }
-
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    width: 960px;
+    width: 1024px;
     margin: 1rem auto;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+      margin: 0 auto;
+      border-bottom: 1px solid ${defaultTheme.palette.primaryGrey};
+    }
   }
 `;
 
 export const CardProductContent = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  padding: 1rem;
-`;
-
-export const CardProductCodeContainer = styled.div`
-  padding: 1rem 0;
-  display: flex;
   flex-direction: column;
-  color: ${defaultTheme.palette.secundaryGrey};
-  text-align: left;
 `;
 
 export const CardProductCode = styled.span`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 4rem;
+  }
 `;
 
 export const CardProductDescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding: 1rem 0rem 1rem 1rem;
+  justify-content: space-between;
   color: ${defaultTheme.palette.secundaryGrey};
+  padding: 1rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: row;
+  }
 `;
 
-export const CardProductRight = styled.div`
+export const CardProductItem = styled.div`
   display: flex;
-  text-align: right;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  align-items: center;
+  :nth-child(2n + 1) {
+    background-color: ${defaultTheme.palette.secundaryLight};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    :nth-child(2n + 1) {
+      background-color: ${defaultTheme.palette.primaryLight};
+    }
+  }
+`;
+
+export const CardProductLabel = styled.span`
+  font-size: 1.2rem;
+  color: ${defaultTheme.palette.tertiaryGrey};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
+  }
 `;
 
 export const OptionsBalls = styled.div`
@@ -61,34 +82,63 @@ export const OptionsBalls = styled.div`
   margin-right: 0.2rem;
 `;
 
-export const CardProductName = styled.h3`
-  font-size: 1.2rem;
+export const CardProductName = styled.span`
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: right;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    text-align: left;
+    width: 20rem;
+  }
 `;
 
-export const CardProductCategory = styled.h3`
+export const CardProductCategory = styled.span`
   font-size: 1rem;
-  color: ${defaultTheme.palette.tertiaryGrey};
+  font-weight: bold;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    text-align: left;
+    width: 6rem;
+  }
 `;
 
-export const CardProductProviderName = styled.h4`
-  padding: 0.2rem 0.2rem 0.2rem 0;
+export const CardProductProviderName = styled.span`
   font-size: 1rem;
-  color: ${defaultTheme.palette.tertiaryGrey};
+  font-weight: bold;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      text-align: left;
+      width: 6rem;
+  }
 `;
 
 export const CardProductPrice = styled.span`
   font-size: 1rem;
-  padding: 0%.2rem;
+  font-weight: bold;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    text-align: left;
+    width: 6rem;
+  }
 `;
 
 export const CardProductDropdown = styled.div`
   background-color: ${defaultTheme.palette.primaryLight};
 `;
 
-export const CardProductPriceCode = styled.h4`
-  display: flex;
-  flex-direction: column;
-  font-size: 1rem;
-  margin-right: 1.2rem;
-  color: ${defaultTheme.palette.tertiaryGrey};
+export const CardProductItemDesktop = styled.div`
+  display: none;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: block;
+  }
+`;
+
+export const CardProductItemMobile = styled.div`
+  display: block;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
+  }
 `;

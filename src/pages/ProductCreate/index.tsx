@@ -54,6 +54,22 @@ const Registration = (): JSX.Element => {
       id: "4",
       name: "Acessórios",
     },
+    {
+      id: "4",
+      name: "Acessórios",
+    },
+    {
+      id: "4",
+      name: "Acessórios",
+    },
+    {
+      id: "4",
+      name: "Acessórios",
+    },
+    {
+      id: "4",
+      name: "Acessórios",
+    },
   ];
 
   yup.setLocale(ptShort);

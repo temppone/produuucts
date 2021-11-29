@@ -8,15 +8,17 @@ import Dropdown from "../Dropdown";
 import {
   CardProductCategory,
   CardProductCode,
-  CardProductCodeContainer,
   CardProductContainer,
   CardProductContent,
+  CardProductDescriptionContainer,
   CardProductDropdown,
+  CardProductItem,
+  CardProductItemDesktop,
+  CardProductItemMobile,
+  CardProductLabel,
   CardProductName,
   CardProductPrice,
-  CardProductPriceCode,
   CardProductProviderName,
-  CardProductRight as CardProductRight,
   OptionsBalls,
 } from "./styles";
 
@@ -37,38 +39,74 @@ const ProductCard = ({
   return (
     <CardProductContainer>
       <CardProductContent>
-        <CardProductCodeContainer>
-          <CardProductName>Nome: {name}</CardProductName>
-          <CardProductCategory>Categoria: {category}</CardProductCategory>
-          <CardProductProviderName>Fornecedor: {providerName}</CardProductProviderName>
-        </CardProductCodeContainer>
-        <CardProductRight>
-          <CardProductPriceCode>
-            <CardProductCode>#{id}</CardProductCode>
+        <CardProductDescriptionContainer>
+          <CardProductItem>
+            <CardProductCode>#{id.toLocaleUpperCase()}</CardProductCode>
+            <CardProductItemMobile>
+              <CardProductDropdown>
+                <Dropdown
+                  dropdownItems={[
+                    {
+                      svg: <PenSvg width="15" height="15" />,
+                      label: "Editar",
+                      onClick: onEdit,
+                    },
+                    {
+                      svg: <TrashSvg width="15" height="15" />,
+                      labelColor: defaultTheme.palette.warning,
+                      label: "Deletar",
+                      onClick: onDelete,
+                    },
+                  ]}
+                >
+                  <OptionsBalls />
+                  <OptionsBalls />
+                  <OptionsBalls />
+                </Dropdown>
+              </CardProductDropdown>
+            </CardProductItemMobile>
+          </CardProductItem>
+          <CardProductItem>
+            <CardProductLabel>Nome</CardProductLabel>
+            <CardProductName>{name}</CardProductName>
+          </CardProductItem>
+          <CardProductItem>
+            <CardProductLabel>Categoria</CardProductLabel>
+            <CardProductCategory>{category}</CardProductCategory>
+          </CardProductItem>
+          <CardProductItem>
+            <CardProductLabel>Fornecedor</CardProductLabel>
+            <CardProductProviderName>{providerName}</CardProductProviderName>
+          </CardProductItem>
+          <CardProductItem>
+            <CardProductLabel>Valor</CardProductLabel>
             <CardProductPrice> {maskReais(price.toString())}</CardProductPrice>
-          </CardProductPriceCode>
-          <CardProductDropdown>
-            <Dropdown
-              dropdownItems={[
-                {
-                  svg: <PenSvg width="15" height="15" />,
-                  label: "Editar",
-                  onClick: onEdit,
-                },
-                {
-                  svg: <TrashSvg width="15" height="15" />,
-                  labelColor: defaultTheme.palette.warning,
-                  label: "Deletar",
-                  onClick: onDelete,
-                },
-              ]}
-            >
-              <OptionsBalls />
-              <OptionsBalls />
-              <OptionsBalls />
-            </Dropdown>
-          </CardProductDropdown>
-        </CardProductRight>
+          </CardProductItem>
+
+          <CardProductItemDesktop>
+            <CardProductDropdown>
+              <Dropdown
+                dropdownItems={[
+                  {
+                    svg: <PenSvg width="15" height="15" />,
+                    label: "Editar",
+                    onClick: onEdit,
+                  },
+                  {
+                    svg: <TrashSvg width="15" height="15" />,
+                    labelColor: defaultTheme.palette.warning,
+                    label: "Deletar",
+                    onClick: onDelete,
+                  },
+                ]}
+              >
+                <OptionsBalls />
+                <OptionsBalls />
+                <OptionsBalls />
+              </Dropdown>
+            </CardProductDropdown>
+          </CardProductItemDesktop>
+        </CardProductDescriptionContainer>
       </CardProductContent>
     </CardProductContainer>
   );

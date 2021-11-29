@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IInputListItem } from "../../@types";
 import {
   InputContainer,
   InputField,
   InputLabel,
+  InputListContainer,
   InputList,
   InputListItem,
   InputWarning,
@@ -21,17 +22,46 @@ const Input = ({
   inputList,
   ...props
 }: IInput): JSX.Element => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState<IInputListItem[]>([]);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsSearchOpen(true);
+    setSearchTerm(e.target.value);
+  };
+
+  useEffect(() => {
+    if (inputList) {
+      const results = inputList.filter((item: IInputListItem) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setSearchResults(results);
+    }
+  }, [searchTerm, inputList]);
+
   return (
     <InputContainer>
       <InputLabel>{label}</InputLabel>
-      <InputField {...props} inputError={inputError} />
+      <InputField
+        inputError={inputError}
+        onChange={handleChange}
+        value={searchTerm}
+        {...props}
+      />
       <InputWarning>{inputError}</InputWarning>
-      <InputList>
-        {inputList &&
-          inputList.map((item, index) => (
-            <InputListItem key={index}>{item.name}</InputListItem>
-          ))}
-      </InputList>
+
+      {inputList && isSearchOpen && (
+        <InputListContainer>
+          <InputList>
+            {searchResults.map((item, index) => (
+              <InputListItem onClick={() => handleChange} key={index}>
+                {item.name}
+              </InputListItem>
+            ))}
+          </InputList>
+        </InputListContainer>
+      )}
     </InputContainer>
   );
 };

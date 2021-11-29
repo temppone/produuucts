@@ -20,7 +20,7 @@ export const HeaderPageContent = styled.div`
   width: 100%;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    width: 960px;
+    width: 1024px;
     margin: 0 auto;
   }
 `;

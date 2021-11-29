@@ -1,25 +1,33 @@
 import styled from "styled-components";
 import { defaultTheme } from "../../styles/theme";
 
-export const DropdownContainer = styled("div")`
+type DropdownProps = {
+  ref?:
+    | ((instance: HTMLUListElement | null) => void)
+    | React.RefObject<HTMLUListElement>
+    | null
+    | undefined;
+};
+
+export const DropdownContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const DropdownHeader = styled("div")`
+export const DropdownHeader = styled.div`
   margin-bottom: 0.1em;
   font-weight: 500;
   font-size: 1.3rem;
   cursor: pointer;
 `;
 
-export const DropdownListContainer = styled("div")`
+export const DropdownListContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 `;
 
-export const DropdownList = styled("ul")`
+export const DropdownList = styled.ul<DropdownProps>`
   width: 30%;
   margin: 0;
   background-color: ${defaultTheme.palette.primaryLight};
@@ -45,7 +53,7 @@ export const DropdownList = styled("ul")`
   }
 `;
 
-export const DropdownItem = styled("li")`
+export const DropdownItem = styled.li`
   display: flex;
   align-items: center;
   align-content: center;

@@ -11,7 +11,16 @@ import HeaderPage from "../../components/HeaderPage";
 import Modal from "../../components/Modal";
 import ProductCard from "../../components/ProductCard";
 import { useProductContext } from "../../contexts/ProductContext";
-import { EmptyProductsContainer, HomeContainer } from "./styles";
+import {
+  EmptyProductsContainer,
+  HeaderList,
+  HeaderListActions,
+  HeaderListCategory,
+  HeaderListCode, HeaderListName,
+  HeaderListPrice,
+  HeaderListProvider,
+  HomeContainer
+} from "./styles";
 
 const Home = (): JSX.Element => {
   const [products, setProducts] = React.useState<IProduct[]>([]);
@@ -27,6 +36,7 @@ const Home = (): JSX.Element => {
     <HomeContainer>
       <Head title="Home" description="Essa é a tela inícial do Produuucts" />
       <HeaderPage headerTitle="Produuucts" />
+
       <CardWrapper>
         <CardContainer>
           <HeaderCard title="Produtos">
@@ -39,6 +49,17 @@ const Home = (): JSX.Element => {
               />
             </Link>
           </HeaderCard>
+
+          {products.length > 0 && (
+            <HeaderList>
+              <HeaderListCode>Código</HeaderListCode>
+              <HeaderListName>Nome</HeaderListName>
+              <HeaderListCategory>Categoria</HeaderListCategory>
+              <HeaderListProvider>Fornecedor</HeaderListProvider>
+              <HeaderListPrice>Preço</HeaderListPrice>
+              <HeaderListActions>Actions</HeaderListActions>
+            </HeaderList>
+          )}
 
           {products.map((item) => (
             <div key={item.id}>

@@ -7,10 +7,10 @@ export const HeaderCardContainer = styled.div`
   align-items: center;
   color: ${defaultTheme.palette.secundaryGrey};
   background-color: transparent;
-  padding: 1rem 0;
+  padding: 1rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    width: 960px;
+    width: 1024px;
     margin: 0 auto;
   }
 `;
